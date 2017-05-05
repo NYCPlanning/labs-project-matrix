@@ -1,0 +1,135 @@
+[
+  {
+    "name": "ZOLA 2.0",
+    "impact": 5,
+    "breadth": 10,
+    "difficulty": 6,
+    "benefits": "NYC"
+  },
+  {
+    "name": "Census Factfinder",
+    "impact": 4,
+    "breadth": 4,
+    "difficulty": 6,
+    "benefits": "NYC"
+  },
+  {
+    "name": "Population Growth JaneLayer",
+    "impact": 3.5,
+    "breadth": 3,
+    "difficulty": 3,
+    "benefits": "NYC"
+  },
+  {
+    "name": "Soft Site Analysis Tool",
+    "impact": 8,
+    "breadth": 6,
+    "difficulty": 4,
+    "benefits": "NYC"
+  },
+  {
+    "name": "PLUTO Explorer",
+    "impact": 8,
+    "breadth": 10,
+    "difficulty": 5,
+    "benefits": "NYC"
+  },
+  {
+    "name": "Applicant Map Clipper",
+    "impact": 9,
+    "breadth": 3,
+    "difficulty": 3,
+    "benefits": "NYC"
+  },
+  {
+    "name": "Planning Knowledge Base",
+    "impact": 7,
+    "breadth": 1,
+    "difficulty": 7,
+    "benefits": "DCP"
+  },
+  {
+    "name": "CPC Actions Map",
+    "impact": 3,
+    "breadth": 6,
+    "difficulty": 3,
+    "benefits": "NYC"
+  },
+  {
+    "name": "CEQR App",
+    "impact": 7,
+    "breadth": 5,
+    "difficulty": 7,
+    "benefits": "NYC"
+  },
+  {
+    "name": "Community Portal Top-Level Map",
+    "impact": 1,
+    "breadth": 1,
+    "difficulty": 1,
+    "benefits": "DCP"
+  },
+  {
+    "name": "3D Model Clip and Ship",
+    "impact": 3,
+    "breadth": 4,
+    "difficulty": 4,
+    "benefits": "NYC"
+  },
+  {
+    "name": "3D Simple Massing and Shadow Tool",
+    "impact": 8,
+    "breadth": 4,
+    "difficulty": 10,
+    "benefits": "The World"
+  },
+  {
+    "name": "Open Trip Planner Buildout",
+    "impact": 7,
+    "breadth": 3,
+    "difficulty": 4,
+    "benefits": "NYC"
+  },
+  {
+    "name": "DANGIT - Data Nudged Into GIT",
+    "impact": 10,
+    "breadth": 10,
+    "difficulty": 9,
+    "benefits": "The World"
+  },
+  {
+    "name": "Remote Data Collection Kiosks",
+    "impact": 4,
+    "breadth": 5,
+    "difficulty": 5,
+    "benefits": "DCP"
+  },
+  {
+    "name": "Computer Vision Counting",
+    "impact": 8,
+    "breadth": 5,
+    "difficulty": 9,
+    "benefits": "The World"
+  },
+  {
+    "name": "BBL List Generator",
+    "impact": 8,
+    "breadth": 2,
+    "difficulty": 1,
+    "benefits": "DCP"
+  },
+  {
+    "name": "POPs Map and Reporting Tool",
+    "impact": 9,
+    "breadth": 8,
+    "difficulty": 3,
+    "benefits": "NYC"
+  },
+  {
+    "name": "Building Activity in Rezoning Areas",
+    "impact": 3,
+    "breadth": 3,
+    "difficulty": 4,
+    "benefits": "NYC"
+  }
+]

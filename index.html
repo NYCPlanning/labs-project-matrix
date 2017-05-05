@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style> /* set the CSS */
+
+svg {
+  background: #f4f4f4;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
+}
+
+circle {
+  fill: #7d83ba;
+  stroke: #444;
+  stroke-width: 2;
+}
+
+circle:hover {
+  cursor:pointer;
+}
+
+text {
+  font-family: sans-serif;
+}
+
+</style>
+<body>
+
+<!-- load the d3.js library -->
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="polyfill.min.js"></script>
+<script>
+
+// set the dimensions and margins of the graph
+var margin = {top: 15, right: 15, bottom: 15, left: 15},
+    width = 700 - margin.left - margin.right,
+    height = 700 - margin.top - margin.bottom;
+
+// set the ranges
+const x = d3.scaleLinear().range([0, width]).domain([0, 10]);
+const y = d3.scaleLinear().range([height, 0]).domain([0, 10]);
+const r = d3.scaleLinear().range([3, 15]).domain([0, 10]);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+function getColor(d) {
+  var b = d.benefits;
+  if (b === 'DCP') return '#fee6ce';
+  if (b === 'NYC') return '#fdae6b';
+  return '#e6550d';
+}
+
+// Get the data
+d3.json("data.json", function(error, data) {
+  console.log(data.length)
+  if (error) throw error;
+
+  // Add the X Axis
+  svg.append("g")
+    .attr("transform", `translate(0, ${height / 2})`)
+    .call(d3.axisBottom(x).ticks([]).tickSize(0));
+
+  // Add the Y Axis
+  svg.append("g")
+    .attr("transform", `translate(${width / 2}, 0)`)
+    .call(d3.axisLeft(y).ticks([]).tickSize(0));
+
+  // Add the scatterplot
+  svg.selectAll("dot")
+    .data(data)
+    .enter().append("circle")
+      .attr("r", d => r(d.difficulty))
+      .attr("cy", d => y(d.impact))
+      .attr("cx", d => x(d.breadth))
+      .style("fill", d => getColor(d));
+
+  svg.append("text")
+    .attr("text-anchor", "left")
+    .attr("transform", `translate(360, 20)`)
+    .text("More Impactful");
+
+  svg.append("text")
+    .attr("text-anchor", "left")
+    .attr("transform", `translate(360, 670)`)
+    .text("Less Impactful");
+
+  svg.append("text")
+    .attr("text-anchor", "left")
+    .attr("transform", `translate(10, 370)`)
+    .text("Fewer Users");
+
+  svg.append("text")
+    .attr("text-anchor", "right")
+    .attr("transform", `translate(590, 370)`)
+    .text("More Users");
+});
+
+</script>
+</body>
