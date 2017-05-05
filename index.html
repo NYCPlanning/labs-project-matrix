@@ -6,6 +6,7 @@
 body {
   height: auto;
   overflow: hidden;
+  font-family: sans-serif;
 }
 
 #main {
@@ -14,7 +15,6 @@ body {
 }
 
 #sidebar {
-  font-family: sans-serif;
   padding: 8px;
   width: auto;
   overflow: hidden;
@@ -28,6 +28,8 @@ body {
 p {
   margin: 0;
 }
+
+
 
 .description {
   font-size: 13px;
@@ -68,6 +70,55 @@ p {
   font-weight: 100;
 }
 
+#legend {
+  padding: 8px;
+  width: auto;
+  overflow: hidden;
+  position: absolute;
+  left: 712px;
+  top: 573px;
+}
+
+.legend-item {
+  margin-bottom: 5px;
+}
+
+.legend-title {
+  font-weight: 600;
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+
+.legend-color {
+  height: 15px;
+  width: 15px;
+  border: 1.5px solid #444;
+  border-radius: 11px;
+  float: left;
+  margin-right: 7px;
+}
+
+.low-difficulty {
+  height: 8px;
+  width: 8px;
+  border: 1.5px solid #474646;
+  border-radius: 14px;
+  float: left;
+  margin: 4px;
+  margin-right: 10px;
+}
+
+.high-difficulty {
+  height: 25px;
+  width: 25px;
+  border: 1.5px solid #474646;
+  border-radius: 15px;
+  float: left;
+  position: relative;
+  top: -5px;
+  left: -4px;
+}
+
 
 svg {
   background: #f4f4f4;
@@ -106,7 +157,18 @@ text {
     <div class="title">Labs <span class="gray">| Project Ideas</span></div>
   </div>
   <div id="main"></div>
-  <div id="sidebar">
+  <div id="sidebar"></div>
+  <div id="legend">
+    <div class="legend-title">Who Benefits?</div>
+
+    <div class="legend-item"><div class="legend-color" style="background:#fee6ce;"></div>DCP</div>
+    <div class="legend-item"><div class="legend-color" style="background:#fdae6b;"></div>NYC</div>
+    <div class="legend-item"><div class="legend-color" style="background:#e6550d;"></div>The World</div>
+
+    <div class="legend-title">Difficulty</div>
+
+    <div class="legend-item"><div class="low-difficulty"></div>Low Difficulty</div>
+    <div class="legend-item"><div class="high-difficulty"></div>High Difficulty</div>
   </div>
   <script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -147,6 +209,7 @@ text {
       <p class="metric">Breadth: ${d.breadth}</p>
       <p class="metric">Impact: ${d.impact}</p>
       <p class="metric">Difficulty: ${d.difficulty}</p>
+      <p class="metric">Benefits: ${d.benefits}</p>
     `
 
     $('#sidebar').html(content)
