@@ -1,6 +1,7 @@
 [
   {
     "name": "ZOLA 2.0",
+    "description": "A simple rebuild of ZoLA using a modern stack.  Toggle supporting layers, click individual features for more info",
     "impact": 5,
     "breadth": 10,
     "difficulty": 6,
@@ -8,6 +9,7 @@
   },
   {
     "name": "Census Factfinder",
+    "description": "A simple rebuild of Census Factfinder using a modern stack and a few new features",
     "impact": 4,
     "breadth": 4,
     "difficulty": 6,
@@ -15,6 +17,7 @@
   },
   {
     "name": "Population Growth JaneLayer",
+    "description": "Time-based view of population data at various admin boundaries",
     "impact": 3.5,
     "breadth": 3,
     "difficulty": 3,
@@ -22,6 +25,7 @@
   },
   {
     "name": "Soft Site Analysis Tool",
+    "description": "Adjust criteria for what defines a soft site, quickly see maps of soft sites in an area, print a soft site report.",
     "impact": 8,
     "breadth": 6,
     "difficulty": 4,
@@ -29,6 +33,7 @@
   },
   {
     "name": "PLUTO Explorer",
+    "description": "Could be part of ZoLa, but functionality similar to plutopages.com, with a deep link URL to each BBL.  BBL pages can then link to Bisweb, capital planning platform, etc",
     "impact": 8,
     "breadth": 10,
     "difficulty": 5,
@@ -36,6 +41,7 @@
   },
   {
     "name": "Applicant Map Clipper",
+    "description": "Allow applicants to define a project site and get “stock” land use and zoning maps, eliminate the need to build their own maps for an application (or have DCP staff re-do the work themselves)",
     "impact": 9,
     "breadth": 3,
     "difficulty": 3,
@@ -43,6 +49,7 @@
   },
   {
     "name": "Planning Knowledge Base",
+    "description": "Allow anyone in the agency to append content, wiki style.  A place to store contacts, documents, etc related to a study or project, or anything really.  No coding skills required",
     "impact": 7,
     "breadth": 1,
     "difficulty": 7,
@@ -50,6 +57,7 @@
   },
   {
     "name": "CPC Actions Map",
+    "description": "Complement the CPC actions list lookup with an interactive map and filtering by CD, boro, time range, etc.",
     "impact": 3,
     "breadth": 6,
     "difficulty": 3,
@@ -57,6 +65,7 @@
   },
   {
     "name": "CEQR App",
+    "description": "Web tools that facilitate the analysis for some of the easier chapters- e.g. an online version of Neera’s Schools Model, something on DEP, etc.",
     "impact": 7,
     "breadth": 5,
     "difficulty": 7,
@@ -64,6 +73,7 @@
   },
   {
     "name": "Community Portal Top-Level Map",
+    "description": "Replace the flash-based map on the neighborhood profiles page on our website.",
     "impact": 1,
     "breadth": 1,
     "difficulty": 1,
@@ -71,6 +81,7 @@
   },
   {
     "name": "3D Model Clip and Ship",
+    "description": "Import the massive 3D building model provided by DoITT, allow users to download small sections of the city, optimize/transform for use in Sketchup, other 3D modelling tools",
     "impact": 3,
     "breadth": 4,
     "difficulty": 4,
@@ -78,6 +89,7 @@
   },
   {
     "name": "3D Simple Massing and Shadow Tool",
+    "description": "Visualize shadows on a 3D model",
     "impact": 8,
     "breadth": 4,
     "difficulty": 10,
@@ -85,6 +97,7 @@
   },
   {
     "name": "Open Trip Planner Buildout",
+    "description": "Add other modes (ferries, buses, cars) to our OTP server, write good docs and a public-facing API",
     "impact": 7,
     "breadth": 3,
     "difficulty": 4,
@@ -92,6 +105,7 @@
   },
   {
     "name": "DANGIT - Data Nudged Into GIT",
+    "description": "Experimental open-source database version control.  Useful for PLUTO, facDB, and other datasets that change from time to time and need better version control.",
     "impact": 10,
     "breadth": 10,
     "difficulty": 9,
@@ -99,6 +113,7 @@
   },
   {
     "name": "Remote Data Collection Kiosks",
+    "description": "Simple survey devices that allow people to tap a button, a microcomputer logs the responses.  Can be used for basic street-level surveys",
     "impact": 4,
     "breadth": 5,
     "difficulty": 5,
@@ -106,6 +121,7 @@
   },
   {
     "name": "Computer Vision Counting",
+    "description": "Count people, bikes, vehicles, etc.  Tap into the Open Source computer vision world so that we can produce our own traffic count data",
     "impact": 8,
     "breadth": 5,
     "difficulty": 9,
@@ -113,6 +129,7 @@
   },
   {
     "name": "BBL List Generator",
+    "description": "This use case came up in a recent meeting, but it is often necessary for planners to generate a list of BBLs for a study area.   This could be a simple web map that does nothing more than allow a user to draw a polygon or multiploygon, and then generates a CSV of all BBLs that intersect, which can be downloaded.",
     "impact": 8,
     "breadth": 2,
     "difficulty": 1,
@@ -120,6 +137,7 @@
   },
   {
     "name": "POPs Map and Reporting Tool",
+    "description": "Finally, an official map and spatial dataset for POPs, including a feedback tool for citizens to report abuse, mismanagement, etc.",
     "impact": 9,
     "breadth": 8,
     "difficulty": 3,
@@ -127,6 +145,7 @@
   },
   {
     "name": "Building Activity in Rezoning Areas",
+    "description": "Maps that aggregate building activity in various rezoning areas, perhaps including a page for each rezoning action with information about what has transpired since the rezoning occurred. ",
     "impact": 3,
     "breadth": 3,
     "difficulty": 4,

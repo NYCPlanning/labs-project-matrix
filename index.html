@@ -1,15 +1,88 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500|Roboto:100,200,300,400,500" rel="stylesheet">
 <style> /* set the CSS */
+
+body {
+  height: auto;
+  overflow: hidden;
+}
+
+#main {
+  float: left;
+  width: 700px;
+}
+
+#sidebar {
+  font-family: sans-serif;
+  padding: 8px;
+  width: auto;
+  overflow: hidden;
+}
+
+#sidebar h3 {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+p {
+  margin: 0;
+}
+
+.description {
+  font-size: 13px;
+  line-height: 17px;
+  margin-bottom: 15px;
+}
+
+.metric {
+  margin-bottom: 5px;
+}
+
+.header {
+  height: 50px;
+  border-bottom: 1px solid #e7e7e7;
+  margin-bottom: 15px;
+}
+
+.logo {
+  background-image: url(https://capitalplanning.nyc.gov/img/logo_120.png);
+  height: 32px;
+  width: 72px;
+  margin-top: 7px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  float: left;
+}
+
+.title {
+  font-family: 'Oswald', sans-serif;
+  color: #d96b27;
+  font-size: 22px;
+  line-height: 44px;
+  margin-left: 85px;
+}
+
+.gray {
+  color: #959595;
+  font-weight: 100;
+}
+
 
 svg {
   background: #f4f4f4;
 }
 
+
 .line {
   fill: none;
   stroke: steelblue;
   stroke-width: 2px;
+}
+
+.domain {
+  stroke-width: 3px;
+  stroke: #b4b4b4;
 }
 
 circle {
@@ -28,80 +101,113 @@ text {
 
 </style>
 <body>
+  <div class="header">
+    <div class="logo"></div>
+    <div class="title">Labs <span class="gray">| Project Ideas</span></div>
+  </div>
+  <div id="main"></div>
+  <div id="sidebar">
+  </div>
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="polyfill.min.js"></script>
+  <script>
 
-<!-- load the d3.js library -->
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="polyfill.min.js"></script>
-<script>
+  // set the dimensions and margins of the graph
+  var margin = {top: 15, right: 15, bottom: 15, left: 15},
+      width = 700 - margin.left - margin.right,
+      height = 700 - margin.top - margin.bottom;
 
-// set the dimensions and margins of the graph
-var margin = {top: 15, right: 15, bottom: 15, left: 15},
-    width = 700 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
+  // set the ranges
+  const x = d3.scaleLinear().range([0, width]).domain([0, 10]);
+  const y = d3.scaleLinear().range([height, 0]).domain([0, 10]);
+  const r = d3.scaleLinear().range([3, 15]).domain([0, 10]);
 
-// set the ranges
-const x = d3.scaleLinear().range([0, width]).domain([0, 10]);
-const y = d3.scaleLinear().range([height, 0]).domain([0, 10]);
-const r = d3.scaleLinear().range([3, 15]).domain([0, 10]);
+  var svg = d3.select("#main").insert("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
+  function getColor(d) {
+    var b = d.benefits;
+    if (b === 'DCP') return '#fee6ce';
+    if (b === 'NYC') return '#fdae6b';
+    return '#e6550d';
+  }
 
-function getColor(d) {
-  var b = d.benefits;
-  if (b === 'DCP') return '#fee6ce';
-  if (b === 'NYC') return '#fdae6b';
-  return '#e6550d';
-}
+  function composeSidebar(d) {
+    const content = `
+      <h3>${d.name}</h3>
+      <p class="description">${d.description}</p>
+      <p class="metric">Breadth: ${d.breadth}</p>
+      <p class="metric">Impact: ${d.impact}</p>
+      <p class="metric">Difficulty: ${d.difficulty}</p>
+    `
 
-// Get the data
-d3.json("data.json", function(error, data) {
-  console.log(data.length)
-  if (error) throw error;
+    $('#sidebar').html(content)
+  }
 
-  // Add the X Axis
-  svg.append("g")
-    .attr("transform", `translate(0, ${height / 2})`)
-    .call(d3.axisBottom(x).ticks([]).tickSize(0));
+  function resetSidebar(d) {
+    const content = `
+      <p>Hover over a point for project details</p>
+    `
 
-  // Add the Y Axis
-  svg.append("g")
-    .attr("transform", `translate(${width / 2}, 0)`)
-    .call(d3.axisLeft(y).ticks([]).tickSize(0));
+    $('#sidebar').html(content)
+  }
 
-  // Add the scatterplot
-  svg.selectAll("dot")
-    .data(data)
-    .enter().append("circle")
-      .attr("r", d => r(d.difficulty))
-      .attr("cy", d => y(d.impact))
-      .attr("cx", d => x(d.breadth))
-      .style("fill", d => getColor(d));
+  // Get the data
+  d3.json("data.json", function(error, data) {
+    console.log(data.length)
+    if (error) throw error;
 
-  svg.append("text")
-    .attr("text-anchor", "left")
-    .attr("transform", `translate(360, 20)`)
-    .text("More Impactful");
+    // Add the X Axis
+    svg.append("g")
+      .attr("transform", `translate(0, ${height / 2})`)
+      .call(d3.axisBottom(x).ticks([]).tickSize(0));
 
-  svg.append("text")
-    .attr("text-anchor", "left")
-    .attr("transform", `translate(360, 670)`)
-    .text("Less Impactful");
+    // Add the Y Axis
+    svg.append("g")
+      .attr("transform", `translate(${width / 2}, 0)`)
+      .call(d3.axisLeft(y).ticks([]).tickSize(0));
 
-  svg.append("text")
-    .attr("text-anchor", "left")
-    .attr("transform", `translate(10, 370)`)
-    .text("Fewer Users");
+    // Add the scatterplot
+    svg.selectAll("dot")
+      .data(data)
+      .enter().append("circle")
+        .attr("r", d => r(d.difficulty))
+        .attr("cy", d => y(d.impact))
+        .attr("cx", d => x(d.breadth))
+        .style("fill", d => getColor(d))
+        .on("mouseover", composeSidebar)
+        .on("mouseout", resetSidebar);
 
-  svg.append("text")
-    .attr("text-anchor", "right")
-    .attr("transform", `translate(590, 370)`)
-    .text("More Users");
-});
+    svg.append("text")
+      .attr("text-anchor", "left")
+      .attr("transform", `translate(360, 20)`)
+      .text("More Impactful");
 
-</script>
+    svg.append("text")
+      .attr("text-anchor", "left")
+      .attr("transform", `translate(360, 670)`)
+      .text("Less Impactful");
+
+    svg.append("text")
+      .attr("text-anchor", "left")
+      .attr("transform", `translate(10, 370)`)
+      .text("Fewer Users");
+
+    svg.append("text")
+      .attr("text-anchor", "right")
+      .attr("transform", `translate(590, 370)`)
+      .text("More Users");
+  });
+
+  resetSidebar();
+
+  </script>
 </body>
